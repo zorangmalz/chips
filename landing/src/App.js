@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 
 //스타일
 import InvestCard, { FaqCard } from './component/Style';
@@ -13,11 +13,27 @@ import rise from "./icon/rise.png"
 import ipo from "./icon/ipo.png"
 import sample from "./icon/sample.png"
 
+import ReactGA from 'react-ga';
+
 function App() {
   const [faqOne, setFaqOne] = useState(false)
   const [faqTwo, setFaqTwo] = useState(false)
   const [faqThree, setFaqThree] = useState(false)
+  
+  useEffect(() => {
+    ReactGA.initialize("UA-189830512-1");
+    ReactGA.set({page: window.location.pathname});
+    ReactGA.pageview(window.location.pathname + window.location.search);
+   }, []);
 
+
+  function funding(){
+    console.log("click!")
+    ReactGA.event({
+      category: "funding",
+      action: "펀딩 페이지로 이동",
+    });
+  }
   return (
     <div style={{width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start"}}>
       <div style={{
@@ -75,7 +91,9 @@ function App() {
             backgroundImage: "linear-gradient(181deg, rgba(255, 255, 255, 0) 99%, #ffffff 0%)"
           }} />
         </div>
-        <div style={{
+        <div 
+        onClick={funding}
+        style={{
           width: "86%", 
           height: 48,
           borderRadius: 4,
