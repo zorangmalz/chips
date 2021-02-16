@@ -18,13 +18,12 @@ export default function InvestCard({icon, text}) {
             alignItems: "center",
             alignSelf: "center"
         }}>
-            <div style={{
+            <img src={icon} style={{
                 marginLeft: 8,
                 marginRight: 8,
                 width: 48,
                 height: 48,
-                backgroundColor: "red"
-            }}>{icon}</div>
+            }} />
             <div style={{
                 fontSize: 16,
                 fontWeight: "bold",
@@ -81,5 +80,15 @@ export function FaqCard({title, content, button, setButton}) {
                 <></>
             }
         </div>
+    )
+}
+
+export function CorporCard({title, currentFund, totalFund, Deadline}) {
+    return (
+        <>
+            <div style={{
+                width: "86%",
+            }}></div>
+        </>
     )
 }

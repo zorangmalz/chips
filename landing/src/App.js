@@ -5,19 +5,28 @@ import React, { useState } from "react"
 import InvestCard, { FaqCard } from './component/Style';
 import { GiPlainArrow } from "react-icons/gi"
 
+//이미지
+import chips from "./icon/chips.png"
+import graychips from "./icon/graychips.png"
+import exit from "./icon/exit.png"
+import rise from "./icon/rise.png"
+import ipo from "./icon/ipo.png"
+import sample from "./icon/sample.png"
+
 function App() {
   const [faqOne, setFaqOne] = useState(false)
   const [faqTwo, setFaqTwo] = useState(false)
   const [faqThree, setFaqThree] = useState(false)
 
   return (
-    <>
+    <div style={{width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start"}}>
       <div style={{
         maxWidth: 450,
         width: "100%",
         backgroundColor: "#ffffff",
         display: "flex",
         flexDirection: "column",
+        alignSelf: "center",
         paddingBottom: 200,
         borderBottom: "1px solid rgba(20, 31, 77, 0.4)"
       }}>
@@ -33,14 +42,12 @@ function App() {
           borderBottom: "1px solid rgba(20, 31, 77, 0.1)",
           marginBottom: 36,
         }}>
-          <div style={{
+          <img src={chips} style={{
             width: 24,
             height: 16,
             marginLeft: "7%",
             marginRight: 8,
-            backgroundColor: "red",
-            fontSize: 10,
-          }}>로고</div>
+          }} />
           <div style={{
             fontSize: 20,
             fontWeight: 600,
@@ -106,14 +113,12 @@ function App() {
           공모를 통해 투자하고 <br />
           자유롭게 거래할 수 있는 <br />
           투자 플랫폼입니다.</div>
-          <div style={{
+          <img src={sample} style={{
             width: 241,
             height: 324,
-            backgroundColor: "red",
-            alignSelf: "right",
+            alignSelf: "flex-end",
             marginRight: "7%",
-            marginLeft: "7%",
-          }}>사진</div>
+          }} />
         </div>
         <div style={{
           marginLeft: "7%",
@@ -228,17 +233,17 @@ function App() {
           }}>위험하지만 매력적인 투자 <br />
           칩스와 함께 시작해봐요.</div>
           <InvestCard 
-            icon="exit"
+            icon={exit}
             text="기업 가치가 성장해 구주를 
             매각하는 경우"
           />
           <InvestCard 
-            icon="m&a"
+            icon={rise}
             text="M&A가 일어나 다른 회사와 
             합병하게 되는 경우"
           />
           <InvestCard 
-            icon="ipo"
+            icon={ipo}
             text="IPO를 통해 증권 거래소에 
             상장하는 경우"
           />
@@ -356,19 +361,16 @@ function App() {
           marginLeft: "7%",
           marginBottom: 8,
         }}>
-          <div style={{
+          <img src={graychips} style={{
             width: 24,
             height: 16,
-            backgroundColor: "red",
-            fontSize: 10,
             marginRight: 8
-          }}>로고</div>
+          }} />
           <div style={{
             fontSize: 20,
             fontWeight: 600,
             lineHeight: 1.2,
-            color: "#000000",
-            opacity: 0.4,
+            color: "#989898",
           }}>Chips</div>
         </div>
         <div style={{
@@ -417,7 +419,7 @@ function App() {
           marginLeft: "7%",
         }}>사업자 번호 : 123-23-12313</div>
       </div>
-    </>
+    </div>
   );
 }
 
