@@ -1,6 +1,5 @@
 import React from "react"
 import "../App.css"
-import { useHistory } from "react-router-dom"
 
 //아이콘
 import { MdKeyboardArrowDown } from "react-icons/md"
@@ -197,7 +196,6 @@ export function CorporCard({ title, currentFund, totalFund, Deadline }) {
 }
 
 export function Header() {
-    const history = useHistory()
     return (
         <>
             <div style={{
