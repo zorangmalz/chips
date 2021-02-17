@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState,useEffect } from "react"
 
 //스타일
-import InvestCard, { FaqCard } from './component/Style';
+import InvestCard, { CorporCard, FaqCard } from './component/Style';
 import { GiPlainArrow } from "react-icons/gi"
 
 //이미지
@@ -58,7 +58,7 @@ function App() {
           borderBottom: "1px solid rgba(20, 31, 77, 0.1)",
           marginBottom: 36,
         }}>
-          <img src={chips} style={{
+          <img alt="" src={chips} style={{
             width: 24,
             height: 16,
             marginLeft: "7%",
@@ -83,13 +83,42 @@ function App() {
           width: "100%",
           position: "relative",
           zIndex: 0,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}>
           <div style={{
             position: "absolute",
+            top: 0,
             width: "100%",
             height: "100%",
-            backgroundImage: "linear-gradient(181deg, rgba(255, 255, 255, 0) 99%, #ffffff 0%)"
+            zIndex: 1,
+            backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9))"
           }} />
+          <CorporCard 
+            title="10년 전 테슬라"
+            currentFund={1050000000}
+            totalFund={1200000000}
+            Deadline={10}
+          />
+          <CorporCard 
+            title="10년 전 테슬라"
+            currentFund={1050000000}
+            totalFund={1200000000}
+            Deadline={10}
+          />
+          <CorporCard 
+            title="10년 전 테슬라"
+            currentFund={1050000000}
+            totalFund={1200000000}
+            Deadline={10}
+          />
+          <CorporCard 
+            title="10년 전 테슬라"
+            currentFund={1050000000}
+            totalFund={1200000000}
+            Deadline={10}
+          />
         </div>
         <div 
         onClick={funding}
@@ -131,7 +160,7 @@ function App() {
           공모를 통해 투자하고 <br />
           자유롭게 거래할 수 있는 <br />
           투자 플랫폼입니다.</div>
-          <img src={sample} style={{
+          <img alt="" src={sample} style={{
             width: 241,
             height: 324,
             alignSelf: "flex-end",
@@ -224,10 +253,186 @@ function App() {
           marginBottom: 16,
         }}>vs</div>
         <div style={{
+          display: "flex",
+          flexDirection: "row",
+          overflowX: "scroll",
+          whiteSpace: "nowrap",
+        }}>
+          {/* 개인 투자 조합 */}
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            marginLeft: "7%",
+            marginBottom: 16,
+          }}>
+            <div style={{
+              fontSize: 20,
+              fontWeight: 600,
+              color: "#040a27",
+              marginBottom: 8
+            }}>개인 투자 조합</div>
+            <div style={{
+              display: "flex",
+              flexDirection: "row",
+              width: 200,
+            }}>
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                marginRight: 20,
+              }}>
+                <div style={{
+                  fontSize: 14,
+                  opacity: 0.6,
+                  color: "#040a27",
+                  marginBottom: 8
+                }}>최소 투자 금액</div>
+                <div style={{
+                  fontSize: 20,
+                  fontWeight: 500,
+                  color: "#da1414"
+                }}>3,000 만원</div>
+              </div>
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start"
+              }}>
+                <div style={{
+                  fontSize: 14,
+                  opacity: 0.6,
+                  color: "#040a27",
+                  marginBottom: 8
+                }}>투자기간</div>
+                <div style={{
+                  fontSize: 20,
+                  fontWeight: 500,
+                  color: "#da1414"
+                }}>최소 7년</div>
+              </div>
+            </div>
+          </div>
+          {/* 크라우드 펀딩 */}
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            marginLeft: "7%",
+            marginBottom: 16,
+          }}>
+            <div style={{
+              fontSize: 20,
+              fontWeight: 600,
+              color: "#040a27",
+              marginBottom: 8
+            }}>크라우드 펀딩</div>
+            <div style={{
+              display: "flex",
+              flexDirection: "row",
+              width: 200,
+            }}>
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                marginRight: 20,
+              }}>
+                <div style={{
+                  fontSize: 14,
+                  opacity: 0.6,
+                  color: "#040a27",
+                  marginBottom: 8
+                }}>최소 투자 금액</div>
+                <div style={{
+                  fontSize: 20,
+                  fontWeight: 500,
+                  color: "#da1414"
+                }}>200 만원</div>
+              </div>
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start"
+              }}>
+                <div style={{
+                  fontSize: 14,
+                  opacity: 0.6,
+                  color: "#040a27",
+                  marginBottom: 8
+                }}>의무보유기간</div>
+                <div style={{
+                  fontSize: 20,
+                  fontWeight: 500,
+                  color: "#da1414"
+                }}>최소 6개월</div>
+              </div>
+            </div>
+          </div>
+          {/* KONEX */}
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            marginLeft: "7%",
+            marginBottom: 16,
+          }}>
+            <div style={{
+              fontSize: 20,
+              fontWeight: 600,
+              color: "#040a27",
+              marginBottom: 8
+            }}>KONEX</div>
+            <div style={{
+              display: "flex",
+              flexDirection: "row",
+              width: 200,
+            }}>
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                marginRight: 20,
+              }}>
+                <div style={{
+                  fontSize: 14,
+                  opacity: 0.6,
+                  color: "#040a27",
+                  marginBottom: 8
+                }}>최소 투자 금액</div>
+                <div style={{
+                  fontSize: 20,
+                  fontWeight: 500,
+                  color: "#da1414"
+                }}>3,000 만원</div>
+              </div>
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start"
+              }}>
+                <div style={{
+                  fontSize: 14,
+                  opacity: 0.6,
+                  color: "#040a27",
+                  marginBottom: 8
+                }}>투자기간</div>
+                <div style={{
+                  fontSize: 20,
+                  fontWeight: 500,
+                  color: "#da1414"
+                }}>없음</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style={{
           fontSize: 14,
           lineHeight: 1.43,
           color: "#151f4e",
           opacity: 0.6,
+          marginTop: 16,
           marginBottom: 32,
           marginLeft: "7%"
         }}>* 거래소 기능 추후 지원 예정</div>
@@ -379,7 +584,7 @@ function App() {
           marginLeft: "7%",
           marginBottom: 8,
         }}>
-          <img src={graychips} style={{
+          <img alt="" src={graychips} style={{
             width: 24,
             height: 16,
             marginRight: 8

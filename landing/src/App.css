@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.boxShadow {
+  box-shadow: 0px 6px 30px 0px rgba(32, 37, 39, 0.12);
+}
+
+/* .scrollBar::-webkit-scrollbar {
+  width: 1px;
+  height: 3px;
+}
+
+.scrollBar::-webkit-scrollbar:vertical {
+  display: none;
+}
+
+.scrollBar::-webkit-scrollbar-track {
+  background: #dbdbdb;
+}
+
+.scrollBar::-webkit-scrollbar-thumb {
+  background:#151f4e
+} */
