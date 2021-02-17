@@ -1,5 +1,6 @@
 import React from "react"
 import "../App.css"
+import { useHistory } from "react-router-dom"
 
 //아이콘
 import { MdKeyboardArrowDown } from "react-icons/md"
@@ -196,6 +197,7 @@ export function CorporCard({ title, currentFund, totalFund, Deadline }) {
 }
 
 export function Header() {
+    const history = useHistory()
     return (
         <>
             <div style={{
@@ -214,6 +216,7 @@ export function Header() {
                     flexDirection: "row",
                     alignItems: "center",
                     marginLeft: "7%",
+                    cursor: "pointer"
                 }}>
                     <img alt="" src={chips} style={{
                         width: 24,
@@ -239,20 +242,21 @@ export function Header() {
     )
 }
 
+//콤마 생성
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 //Home
 export function PersonalAsset({ currentAsset, pastAsset }) {
-    //콤마 생성
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
     const money = numberWithCommas(currentAsset)
 
     //증가량
     function upDown(x, y) {
         if (x > y) {
-            return `+ ${numberWithCommas(x-y)} (${(x/y).toFixed(1)} %)`
+            return `+ ${numberWithCommas(x-y)} (${((x-y)/x).toFixed(1)} %)`
         } else if (x < y) {
-            return `- ${numberWithCommas(y-x)} (${(y/x).toFixed(1)} %)`
+            return `- ${numberWithCommas(y-x)} (${((y-x)/x).toFixed(1)} %)`
         } else {
             return `0 (0 %)`
         }
@@ -297,13 +301,13 @@ export function PersonalAsset({ currentAsset, pastAsset }) {
 
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center"
+                    justifyContent: "center",
+                    cursor: "pointer"
                 }}>
                     <div style={{
                         fontSize: 12,
                         color: "#040a27",
                         opacity: 0.6,
-                        cursor: "pointer"
                     }}>자세히</div>
                 </div>
                 <div style={{
@@ -314,13 +318,13 @@ export function PersonalAsset({ currentAsset, pastAsset }) {
 
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center"
+                    justifyContent: "center",
+                    cursor: "pointer"
                 }}>
                     <div style={{
                         fontSize: 12,
                         color: "#ffffff",
                         fontWeight: "bold",
-                        cursor: "pointer"
                     }}>거래하기</div>
                 </div>
             </div>
@@ -328,7 +332,8 @@ export function PersonalAsset({ currentAsset, pastAsset }) {
     )
 }
 
-export function NewChips({ corporName, step, currentFund, totalFund, Deadline }) {
+//Home
+export function NewChips({ corporName, step, currentFund, totalFund }) {
     const rate = (currentFund / totalFund * 100).toFixed(0)
     const eok = Math.floor(currentFund / 100000000)
     const cheon = (currentFund % 100000000) / 10000000
@@ -336,13 +341,15 @@ export function NewChips({ corporName, step, currentFund, totalFund, Deadline })
         <div style={{
             width: "86%",
             borderRadius: 10,
-            paddingTop: 20,
-            paddingBottom: 20,
+            marginBottom: 16,
+            marginLeft: "7%",
 
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
+            backgroundColor: "#151f4e"
         }}>
             <div style={{
+                marginTop: 20,
                 marginLeft: "6%",
                 marginRight: "6%",
                 fontSize: 20,
@@ -417,7 +424,7 @@ export function NewChips({ corporName, step, currentFund, totalFund, Deadline })
                     fontSize: 14,
                     fontWeight: 600,
                     color: "#ffffff"
-                }}>{step}</div>
+                }}>{eok}억 {cheon}천 만원</div>
             </div>
             <div style={{
                 display: "flex",
@@ -427,17 +434,157 @@ export function NewChips({ corporName, step, currentFund, totalFund, Deadline })
                 alignSelf: "center",
 
                 width: "88%",
-                marginBottom: 8,
+                marginBottom: 20,
             }}>
                 <div style={{
                     fontSize: 14,
                     color: "#ffffff"
-                }}>투자 단계</div>
+                }}>모집 기간</div>
                 <div style={{
                     fontSize: 14,
                     fontWeight: 600,
                     color: "#ffffff"
-                }}>{step}</div>
+                }}>21.02.09 ~ 21.03.10</div>
+            </div>
+        </div>
+    )
+}
+
+//Home
+export function HotChips({logo, corporName, kCorporName, currentValue, pastValue}) {
+    //증가량
+    function upDown(x, y) {
+        if (x > y) {
+            return `${numberWithCommas(x-y)}`
+        } else if (x < y) {
+            return `${numberWithCommas(y-x)}`
+        } else {
+            return `0`
+        }
+    }
+    return (
+        <div style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+
+            width: "86%",
+            marginBottom: 16,
+            marginLeft: "7%",
+        }}>
+            <div style={{
+                width: 64,
+                height: 64,
+                borderRadius: 15,
+                backgroundColor: "#fdf3f2",
+
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+            }}>
+                <img 
+                    alt=""
+                    src={logo}
+                    style={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: 5,
+                    }}
+                />
+            </div>
+            <div style={{
+                display: "flex",
+                flexDirection: "column",
+                minWidth: 180,
+                width: "70%",
+                maxWidth: 230,
+            }}>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginBottom: 4,
+                    width: "100%",
+                }}>
+                    <div style={{
+                        width: "30%",
+                        textAlign: "left",
+
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        color: "#040a27",
+                    }}>{corporName}</div>
+                    <div style={{
+                        width: "30%",
+                        textAlign: "right",
+
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        color: "#040a27",
+                    }}>{upDown(currentValue, pastValue)}</div>
+                    <div style={{
+                        width: "30%",
+                        textAlign: "right",
+
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        color: currentValue - pastValue > 0 ? "#5aca75" : "#da1414",
+                    }}>{currentValue > pastValue ? "+" : null}{((currentValue - pastValue)/currentValue).toFixed(2)}%</div>
+                </div>
+                <div style={{
+                    opacity: 0.4,
+                    fontSize: 12,
+                    color: "#040a27"
+                }}>{kCorporName}</div>
+            </div>
+        </div>
+    )
+}
+
+//Home
+export function ChipsStory({img, title, date}) {
+    return (
+        <div style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+
+            width: "86%",
+            marginLeft: "7%",
+            marginBottom: 16,
+        }}>
+            <img alt="" src={img}
+                style={{
+                    width: 72,
+                    height: 72,
+                    borderRadius: 5,
+                    marginRight: 8,
+                    backgroundColor: "#151f4e"
+                }}
+            />
+            <div style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                justifyContent: "space-between",
+
+                minWidth: 170,
+                maxWidth: 220,
+                width: "70%",
+                height: 72,
+            }}>
+                <div style={{
+                    fontSize: 16,
+                    color: "#040a27",
+                    lineHeight: 1.5,
+                }}>{title}</div>
+                <div style={{
+                    fontSize: 12,
+                    color: "#040a27",
+                    opacity: 0.6,
+                }}>{date}</div>
             </div>
         </div>
     )
